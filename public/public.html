@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="/public/download.jpeg" alt="">
+    <div id="todo"></div>
+    <script>
+        async function loadJSONData() {
+            let result = await fetch('/todo');
+            let todos = await result.json();
+
+            let todoList = document.getElementById('todo');
+            for (let i = 0; i < todos.length; i++) {
+                let todo = todos[i];
+                let li = document.createElement("li");
+                li.innerText = `${todo.title} - ${todo.description}`;
+                todoList.appendChild(li);
+            }
+        }
+        loadJSONData();
+    </script>
+</body>
+
+</html>
