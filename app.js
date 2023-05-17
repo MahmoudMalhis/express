@@ -44,9 +44,9 @@ app.post("/todo/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const newTodo = {
     id: id,
-    title: req.body.title,
-    description: req.body.description,
-    status: req.body.status,
+    title: req.ToDo.title,
+    description: req.ToDo.description,
+    status: req.ToDo.status,
   };
   ToDo.push(newTodo);
   res.send(`Created new todo with id ${id}`);
